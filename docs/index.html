@@ -1,0 +1,767 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>js-sugar-date</title>
+	<meta name="description" content="Documentation for js-sugar-date">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">js-sugar-date</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>js-sugar-date</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#datetime-library" id="datetime-library" style="color: inherit; text-decoration: none;">
+					<h1>DateTime Library</h1>
+				</a>
+				<p>JS-Sugar Date (JSS Date) is a multi-calendar, extensible, immutable, tree-shakable and lightweight date-time library for javascript.</p>
+				<a href="#main-features" id="main-features" style="color: inherit; text-decoration: none;">
+					<h2>Main Features</h2>
+				</a>
+				<ul>
+					<li>Multi-Calendar<ul>
+							<li>Pre-implemented calendars<ul>
+									<li>Gregorian (2 implementations)</li>
+									<li>Islamic</li>
+									<li>Persian</li>
+									<li>(More calendars will be added in the future)</li>
+								</ul>
+							</li>
+							<li>Extensible<ul>
+									<li>Easily add your own calendar by inheriting from a base class and implementing a few abstract methods.</li>
+								</ul>
+							</li>
+							<li>Widerange support</li>
+							<li>Accurate<ul>
+									<li>See our tests at github</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>Localization support <ul>
+							<li>Intl-API based locales</li>
+							<li>File based locales (soon)</li>
+						</ul>
+					</li>
+					<li>Timezone support<ul>
+							<li>Intl-API based timezones</li>
+							<li>File based timezones (soon)</li>
+						</ul>
+					</li>
+					<li>Immutable<ul>
+							<li>All objects (DateTimes, Calendars, Locales, Zones, Durations) are immutable.</li>
+						</ul>
+					</li>
+					<li>Extensible<ul>
+							<li>Easily extend calendars, locales and zones</li>
+						</ul>
+					</li>
+					<li>Treeshakable</li>
+					<li>Lightweight</li>
+				</ul>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code class="language-node">npm install @js-sugar/date
+</code></pre>
+				<a href="#basic-usage" id="basic-usage" style="color: inherit; text-decoration: none;">
+					<h2>Basic Usage</h2>
+				</a>
+				<p>...</p>
+				<a href="#create" id="create" style="color: inherit; text-decoration: none;">
+					<h2>Create</h2>
+				</a>
+				<p>...</p>
+				<a href="#get" id="get" style="color: inherit; text-decoration: none;">
+					<h2>Get</h2>
+				</a>
+				<a href="#calculations" id="calculations" style="color: inherit; text-decoration: none;">
+					<h3>Calculations</h3>
+				</a>
+				<p> Calculations description ...</p>
+				<a href="#query" id="query" style="color: inherit; text-decoration: none;">
+					<h3>Query</h3>
+				</a>
+				<p>Query description ...</p>
+				<a href="#display--convert" id="display--convert" style="color: inherit; text-decoration: none;">
+					<h3>Display + Convert</h3>
+				</a>
+				<p>format description ...</p>
+				<a href="#locales" id="locales" style="color: inherit; text-decoration: none;">
+					<h2>Locales</h2>
+				</a>
+				<p>...</p>
+				<a href="#time-zones" id="time-zones" style="color: inherit; text-decoration: none;">
+					<h2>Time Zones</h2>
+				</a>
+				<p>...</p>
+				<a href="#calendars" id="calendars" style="color: inherit; text-decoration: none;">
+					<h2>Calendars</h2>
+				</a>
+				<p>...</p>
+				<a href="#misc" id="misc" style="color: inherit; text-decoration: none;">
+					<h3>Misc</h3>
+				</a>
+				<p>Validity description ...</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Modules</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/calendars_gregorian.html">calendars/gregorian</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/calendars_gregorian2.html">calendars/gregorian2</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/calendars_hijri.html">calendars/hijri</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/calendars_persian.html">calendars/persian</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/common.html">common</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/common_const.html">common/const</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/common_intl.html">common/intl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/common_types.html">common/types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/common_utils.html">common/utils</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_af.html">locales/__tmp/af</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_am.html">locales/__tmp/am</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ar.html">locales/__tmp/ar</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ar_dz.html">locales/__tmp/ar-<wbr>dz</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ar_kw.html">locales/__tmp/ar-<wbr>kw</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ar_ly.html">locales/__tmp/ar-<wbr>ly</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ar_ma.html">locales/__tmp/ar-<wbr>ma</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ar_sa.html">locales/__tmp/ar-<wbr>sa</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ar_tn.html">locales/__tmp/ar-<wbr>tn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_az.html">locales/__tmp/az</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_be.html">locales/__tmp/be</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_bg.html">locales/__tmp/bg</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_bi.html">locales/__tmp/bi</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_bm.html">locales/__tmp/bm</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_bn.html">locales/__tmp/bn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_bo.html">locales/__tmp/bo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_br.html">locales/__tmp/br</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_bs.html">locales/__tmp/bs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ca.html">locales/__tmp/ca</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_cs.html">locales/__tmp/cs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_cv.html">locales/__tmp/cv</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_cy.html">locales/__tmp/cy</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_da.html">locales/__tmp/da</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_de.html">locales/__tmp/de</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_de_at.html">locales/__tmp/de-<wbr>at</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_de_ch.html">locales/__tmp/de-<wbr>ch</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_dv.html">locales/__tmp/dv</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_el.html">locales/__tmp/el</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en.html">locales/__tmp/en</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_au.html">locales/__tmp/en-<wbr>au</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_ca.html">locales/__tmp/en-<wbr>ca</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_gb.html">locales/__tmp/en-<wbr>gb</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_ie.html">locales/__tmp/en-<wbr>ie</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_il.html">locales/__tmp/en-<wbr>il</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_in.html">locales/__tmp/en-<wbr>in</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_nz.html">locales/__tmp/en-<wbr>nz</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_sg.html">locales/__tmp/en-<wbr>sg</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_en_tt.html">locales/__tmp/en-<wbr>tt</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_eo.html">locales/__tmp/eo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_es.html">locales/__tmp/es</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_es_do.html">locales/__tmp/es-<wbr>do</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_es_pr.html">locales/__tmp/es-<wbr>pr</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_es_us.html">locales/__tmp/es-<wbr>us</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_et.html">locales/__tmp/et</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_eu.html">locales/__tmp/eu</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_fa.html">locales/__tmp/fa</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_fi.html">locales/__tmp/fi</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_fo.html">locales/__tmp/fo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_fr.html">locales/__tmp/fr</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_fr_ca.html">locales/__tmp/fr-<wbr>ca</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_fr_ch.html">locales/__tmp/fr-<wbr>ch</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_fy.html">locales/__tmp/fy</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ga.html">locales/__tmp/ga</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_gd.html">locales/__tmp/gd</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_gl.html">locales/__tmp/gl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_gom_latn.html">locales/__tmp/gom-<wbr>latn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_gu.html">locales/__tmp/gu</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_he.html">locales/__tmp/he</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_hi.html">locales/__tmp/hi</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_hr.html">locales/__tmp/hr</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ht.html">locales/__tmp/ht</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_hu.html">locales/__tmp/hu</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_hy_am.html">locales/__tmp/hy-<wbr>am</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_id.html">locales/__tmp/id</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_is.html">locales/__tmp/is</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_it.html">locales/__tmp/it</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_it_ch.html">locales/__tmp/it-<wbr>ch</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ja.html">locales/__tmp/ja</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_jv.html">locales/__tmp/jv</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ka.html">locales/__tmp/ka</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_kk.html">locales/__tmp/kk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_km.html">locales/__tmp/km</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_kn.html">locales/__tmp/kn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ko.html">locales/__tmp/ko</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ku.html">locales/__tmp/ku</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ky.html">locales/__tmp/ky</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_lb.html">locales/__tmp/lb</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_lo.html">locales/__tmp/lo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_lt.html">locales/__tmp/lt</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_lv.html">locales/__tmp/lv</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_me.html">locales/__tmp/me</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_mi.html">locales/__tmp/mi</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_mk.html">locales/__tmp/mk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ml.html">locales/__tmp/ml</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_mn.html">locales/__tmp/mn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_mr.html">locales/__tmp/mr</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ms.html">locales/__tmp/ms</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ms_my.html">locales/__tmp/ms-<wbr>my</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_mt.html">locales/__tmp/mt</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_my.html">locales/__tmp/my</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_nb.html">locales/__tmp/nb</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ne.html">locales/__tmp/ne</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_nl.html">locales/__tmp/nl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_nl_be.html">locales/__tmp/nl-<wbr>be</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_nn.html">locales/__tmp/nn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_oc_lnc.html">locales/__tmp/oc-<wbr>lnc</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_pa_in.html">locales/__tmp/pa-<wbr>in</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_pl.html">locales/__tmp/pl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_pt.html">locales/__tmp/pt</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_pt_br.html">locales/__tmp/pt-<wbr>br</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ro.html">locales/__tmp/ro</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ru.html">locales/__tmp/ru</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_rw.html">locales/__tmp/rw</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sd.html">locales/__tmp/sd</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_se.html">locales/__tmp/se</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_si.html">locales/__tmp/si</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sk.html">locales/__tmp/sk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sl.html">locales/__tmp/sl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sq.html">locales/__tmp/sq</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sr.html">locales/__tmp/sr</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sr_cyrl.html">locales/__tmp/sr-<wbr>cyrl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ss.html">locales/__tmp/ss</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sv.html">locales/__tmp/sv</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_sw.html">locales/__tmp/sw</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ta.html">locales/__tmp/ta</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_te.html">locales/__tmp/te</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tet.html">locales/__tmp/tet</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tg.html">locales/__tmp/tg</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_th.html">locales/__tmp/th</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tk.html">locales/__tmp/tk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tl_ph.html">locales/__tmp/tl-<wbr>ph</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tlh.html">locales/__tmp/tlh</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tr.html">locales/__tmp/tr</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tzl.html">locales/__tmp/tzl</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tzm.html">locales/__tmp/tzm</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_tzm_latn.html">locales/__tmp/tzm-<wbr>latn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ug_cn.html">locales/__tmp/ug-<wbr>cn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_uk.html">locales/__tmp/uk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_ur.html">locales/__tmp/ur</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_uz.html">locales/__tmp/uz</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_uz_latn.html">locales/__tmp/uz-<wbr>latn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_vi.html">locales/__tmp/vi</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_x_pseudo.html">locales/__tmp/x-<wbr>pseudo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_yo.html">locales/__tmp/yo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_zh.html">locales/__tmp/zh</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_zh_cn.html">locales/__tmp/zh-<wbr>cn</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_zh_hk.html">locales/__tmp/zh-<wbr>hk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/locales___tmp_zh_tw.html">locales/__tmp/zh-<wbr>tw</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main.html">main</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_calendar.html">main/calendar</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_calendar_calendar.html">main/calendar/calendar</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_calendar_calendars.html">main/calendar/calendars</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_common.html">main/common</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_date_time.html">main/date-<wbr>time</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_duration.html">main/duration</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_duration_duration.html">main/duration/duration</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_locale.html">main/locale</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_locale_fallback_locale.html">main/locale/fallback-<wbr>locale</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_locale_locale.html">main/locale/locale</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_locale_locales.html">main/locale/locales</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_locale_runtime_locale.html">main/locale/runtime-<wbr>locale</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_locale_static_locale.html">main/locale/static-<wbr>locale</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_zone.html">main/zone</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_zone_fixed_zone.html">main/zone/fixed-<wbr>zone</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_zone_iana_zone.html">main/zone/iana-<wbr>zone</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_zone_local_zone.html">main/zone/local-<wbr>zone</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_zone_runtime_iana_zone.html">main/zone/runtime-<wbr>iana-<wbr>zone</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_zone_zone.html">main/zone/zone</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/main_zone_zones.html">main/zone/zones</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_day_of_year.html">plugins/day-<wbr>of-<wbr>year</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_days_in_month.html">plugins/days-<wbr>in-<wbr>month</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_days_in_year.html">plugins/days-<wbr>in-<wbr>year</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_diff.html">plugins/diff</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_format.html">plugins/format</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_from_js_date.html">plugins/from-<wbr>js-<wbr>date</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_from_object.html">plugins/from-<wbr>object</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_after.html">plugins/is-<wbr>after</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_before.html">plugins/is-<wbr>before</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_between.html">plugins/is-<wbr>between</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_jss_date.html">plugins/is-<wbr>jss-<wbr>date</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_leap_year.html">plugins/is-<wbr>leap-<wbr>year</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_same.html">plugins/is-<wbr>same</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_same_or_after.html">plugins/is-<wbr>same-<wbr>or-<wbr>after</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_same_or_before.html">plugins/is-<wbr>same-<wbr>or-<wbr>before</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_is_valid.html">plugins/is-<wbr>valid</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_parse.html">plugins/parse</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_quarter.html">plugins/quarter</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_to_array.html">plugins/to-<wbr>array</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_to_js_date.html">plugins/to-<wbr>js-<wbr>date</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_week_day.html">plugins/week-<wbr>day</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_week_day_locale.html">plugins/week-<wbr>day-<wbr>locale</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/plugins_week_number.html">plugins/week-<wbr>number</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
