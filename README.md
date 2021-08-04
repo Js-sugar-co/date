@@ -31,6 +31,7 @@ JS-Sugar Date is a multi-calendar (calendar independent), extensible, immutable,
   - Core library size is around 15KB minified (5KB Gzipped). All calendars, locales, zones and plugins are tree-shakable. you only import things you need in your project.
 - Lightweight
   - Again, Core library size is around 5KB (minified, Gzipped).
+- Node.js and browser support
 
 ## Installation
 ```node
@@ -45,17 +46,26 @@ import { DateTime, Calendars } from '@js-sugar/date';
 import { GregorianCalendar } = from '@js-sugar/date/calendars/gregorian';
 import { PersianCalendar } = from '@js-sugar/date/calendars/persian';
 
-/*
-Instantiate and add the calendars you need in your project (Do it just once and application-wide)
-*/
-Calendars.add(new GregorianCalendar('gregorian'));
+// Instantiate and add the calendars you need in your project.
+// Do it just once and application-wide.
+// You can add multiple instances of a Calendar to the Calendars collection.
+// Every calendar object must have a unique ID.
+
+Calendars.add(new GregorianCalendar('gregorian')); 
 Calendars.add(new PersianCalendar('persian'));
 
 // Done! Now you are ready to use the library in your project.
 ```
 
 ## Create
-Creating DateTime objects is easy. every DateTime object has three "required" parts: Calendar, Zone and Locale. if you don't specify this parts, Default values will be used:
+Creating a DateTime object is easy. every DateTime object has three "required" parts:
+
+- Calendar: like Gregorian, Hijri, Persian, ...
+- Zone: An time-zone like UTC, America/New_York, ...
+- Locale: like ar-AE, en-US, de-DE
+
+if you don't specify these values, default values will be used.
+
 
 ```
 // Somewhere in your application
@@ -78,3 +88,7 @@ const d = new DateTime({
 
 console.log(d.year, d.month, d.day);
 ```
+
+> Note:  
+DateTime object is immutable. after creating a DateTime object, you can not change it.
+
