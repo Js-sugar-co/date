@@ -79,7 +79,7 @@ console.log(d.year, d.month, d.day);
 - Default Zone: System local time-zone (you can change it).
 
 ```
-// Create a DateTime object with a specific Calendar, Zone and Locale
+// Create a DateTime object with a specific Calendar, Zone and Locale:
 const d = new DateTime({
   calendar: Calendars.find('persian'),
   zone: Zones.utc,
@@ -90,5 +90,52 @@ console.log(d.year, d.month, d.day);
 ```
 
 > Note:  
-DateTime object is immutable. after creating a DateTime object, you can not change it.
+DateTime object is immutable. after creating a DateTime object, you cannot change it.
 
+### Constructor overloads
+DateTime constructor has several overloads:
+
+```
+  DateTime();
+
+  DateTime(opts: DateTimeCreationOptions);  
+
+  DateTime(year: number, month: number, day?: number, hour?: number, minute?: number, second?: number, ms?: number, opts?: DateTimeCreationOptions);  
+
+  DateTime(opts: DateTimeCreationOptions, year: number, month: number, day?: number, hour?: number, minute?: number, second?: number, ms?: number); 
+
+  DateTime(timestamp: number, opts?: DateTimeCreationOptions);  
+
+```
+
+Examples:  
+```
+// Create a DateTime object with default Calendar, Zone and Locale:
+const d1 = new DateTime(); 
+
+// Create a DateTime object with a DateTimeCreationOptions object.
+// 'calender', 'zone' and 'locale' parameters are optional, if you don't specify them, default values will be used.
+const d2 = new DateTime({
+  calendar: Calendars.find('persian'),
+  zone: Zones.utc,
+  locale: Locales.resolve('fa-IR')
+});
+
+// Create a DateTime object with year, month, day, ... parameters
+const d3 = new DateTime(2021, 8); // year and month are required
+const d4 = new DateTime(2021, 8, 1, 23, 50, 55);
+const d5 = new DateTime(2021, 8, 1, 23, 50, 55, 0, { 
+  zone: Zones.utc
+});
+const d7 = new DateTime(1442, 12, 28, 10, 50, 55, 0, { 
+  calendar: calendars.find('hijri')
+});
+const d6 = new DateTime(1400, 5, 17, 20, 50, 55, 0, {
+   calendar: 'persian'
+});
+const d7 = new DateTime(1400, 5, 17, 20, 50, 55, 0, {
+   calendar: 'persian',
+   locale: 'fa-IR',
+   zone: zones.utc
+});
+```
