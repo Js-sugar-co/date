@@ -69,10 +69,10 @@ Calendars.add(new HijriCalendar('hijri', -1)); // add a Hijri calendar with a un
 ```
 
 > Note:  
- the first calendar that you add to calendars pool is default calendar
- 
+ the first calendar you add to the Calendars pool is set as default calendar.
+
 ## Default calendar
-The first calendar that you add to the Calendars pool will set as default calendar. You can change default calendar of the Calendars pool. if you create a DateTime object and don't provide a value for the Calendar argument, default calendar of Calendars pool is used as the calendar of that DateTime object.
+The first calendar you add to the Calendars pool is set as default calendar. You can change default. If you create a DateTime object and don't provide a value for the Calendar argument, default calendar of Calendars pool is used as the calendar of that DateTime object.
 
 ```Default calendar code examples:
 const gregorianNow = new DateTime(); // now
