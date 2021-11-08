@@ -71,8 +71,12 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A class for managing zones.</p>
+						<p>A class for managing time zones.</p>
 					</div>
+					<dl class="tsd-comment-tags">
+						<dt>abstract</dt>
+						<dd></dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -103,7 +107,8 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="main_zone_zones.Zones.html#resolve" class="tsd-kind-icon">resolve</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="main_zone_zones.Zones.html#fixed" class="tsd-kind-icon">fixed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="main_zone_zones.Zones.html#iana" class="tsd-kind-icon">iana</a></li>
 							</ul>
 						</section>
 					</div>
@@ -132,21 +137,21 @@
 					<a name="local" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> local</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> local<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="main_zone_zone.Zone.html" class="tsd-signature-type" data-tsd-kind="Class">Zone</a></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> local<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="main_zone_local_zone.LocalZone.html" class="tsd-signature-type" data-tsd-kind="Class">LocalZone</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/js-sugar/date-src/blob/92b5574/src/main/zone/zones.ts#L17">main/zone/zones.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/js-sugar/date-src/blob/003facb/src/main/zone/zones.ts#L23">main/zone/zones.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the system&#39;s local zone.</p>
+									<p>Gets the system&#39;s local time zone.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="main_zone_zone.Zone.html" class="tsd-signature-type" data-tsd-kind="Class">Zone</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="main_zone_local_zone.LocalZone.html" class="tsd-signature-type" data-tsd-kind="Class">LocalZone</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -154,21 +159,21 @@
 					<a name="utc" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> utc</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> utc<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="main_zone_zone.Zone.html" class="tsd-signature-type" data-tsd-kind="Class">Zone</a></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> utc<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="main_zone_fixed_zone.FixedZone.html" class="tsd-signature-type" data-tsd-kind="Class">FixedZone</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/js-sugar/date-src/blob/92b5574/src/main/zone/zones.ts#L22">main/zone/zones.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/js-sugar/date-src/blob/003facb/src/main/zone/zones.ts#L28">main/zone/zones.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets UTC zone.</p>
+									<p>Gets UTC time zone.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="main_zone_zone.Zone.html" class="tsd-signature-type" data-tsd-kind="Class">Zone</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="main_zone_fixed_zone.FixedZone.html" class="tsd-signature-type" data-tsd-kind="Class">FixedZone</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -176,21 +181,21 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="resolve" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> resolve</h3>
+					<a name="fixed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> fixed</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">resolve<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>throwError<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="main_zone_zone.Zone.html" class="tsd-signature-type" data-tsd-kind="Class">Zone</a></li>
+						<li class="tsd-signature tsd-kind-icon">fixed<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, hour<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, minute<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="main_zone_fixed_zone.FixedZone.html" class="tsd-signature-type" data-tsd-kind="Class">FixedZone</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/js-sugar/date-src/blob/92b5574/src/main/zone/zones.ts#L27">main/zone/zones.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/js-sugar/date-src/blob/003facb/src/main/zone/zones.ts#L33">main/zone/zones.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Tries to resolve a Zone by it&#39;s name.</p>
+									<p>Creates a fixed time zone.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -199,15 +204,55 @@
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <span class="tsd-signature-symbol">{ </span>throwError<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>hour: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>minute: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="main_zone_fixed_zone.FixedZone.html" class="tsd-signature-type" data-tsd-kind="Class">FixedZone</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="iana" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> iana</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">iana<span class="tsd-signature-symbol">(</span>ianaName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>strict<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="main_zone_iana_zone.IANAZone.html" class="tsd-signature-type" data-tsd-kind="Class">IANAZone</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/js-sugar/date-src/blob/003facb/src/main/zone/zones.ts#L44">main/zone/zones.ts:44</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Tries to resolve an IANA time zone.
+										It first tries to find the zone in the repository. If find operation fails, it tries to create a RuntimeIANAZone (a Zone created by using javascript Intl API).
+									If creating RuntimeIANAZone fails, this method returns undefined or throws an error (based on &quot;opts.strict&quot; parameter)</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ianaName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <span class="tsd-signature-symbol">{ </span>strict<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
-											<h5>throw<wbr>Error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+											<h5>strict<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
 										</li>
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="main_zone_zone.Zone.html" class="tsd-signature-type" data-tsd-kind="Class">Zone</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="main_zone_iana_zone.IANAZone.html" class="tsd-signature-type" data-tsd-kind="Class">IANAZone</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -241,7 +286,10 @@
 								<a href="main_zone_zones.Zones.html#utc" class="tsd-kind-icon">utc</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="main_zone_zones.Zones.html#resolve" class="tsd-kind-icon">resolve</a>
+								<a href="main_zone_zones.Zones.html#fixed" class="tsd-kind-icon">fixed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="main_zone_zones.Zones.html#iana" class="tsd-kind-icon">iana</a>
 							</li>
 						</ul>
 					</li>
