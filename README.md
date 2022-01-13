@@ -1,25 +1,26 @@
 # JSS-Date
 
-Jss-date  is a  multi-calendar, lightweight and rich JavaScript library for parsing, validating, manipulating, formatting, and displaying dates and times for all the Javascript environments (NodeJS, browser). It supports many calendars including Gregorian, Gregorian2, Persian, and Islamic (Hjri) in which you can easily convert datetimes between calendars and time zones.
+JSS-date is a multi-calendar, lightweight and rich JavaScript library for parsing, validating, manipulating, formatting, and displaying dates and times for all the Javascript runtime environments (NodeJS, browser, ...). It supports many calendars and you can easily convert DateTimes between different calendars and time zones.
 
 ## Main Features
+- Multi-Calendar  
+  JSS-Date supports supports any calendars. currently we have implemented Gregorian, Hijri and Persian calendars and we plan to implement more calendars in the future. you can easily implement your own calendars.
 
-- Multi-Calendar
-  - Independent
-    - The library is not dependent on any other calendar.
+  - Calendar Independent
+    - The (core) library is not dependent on any specific calendar. you can create DateTime objects with different Calendar objects.
   - Extensible
-    - Easily add your own calendar by inheriting from a base class and implementing abstract methods.
-  - Pre-implemented calendars
-    - Gregorian
+    - Calendars, locales and zones can be extended.
+    - You can easily implement your own calendars, locales and zones by just inheriting from a base class and implementing a few abstract methods.
+  - With 4 Pre-implemented calendars
+    - Gregorian (implemented by using JavaScript Date object)
     - Gregorian2
     - Islamic (Hijri)
     - Persian
-    - ...(More calendars will be added in the future)
+    - (More calendars will be added in the future ...)
   - Accurate
     - See our tests in github (soon)
-- Date range support
-  - Gregorian Calendar: (It wraps javascript date. [date range support: since January 01, 1970, 00:00:00 UTC]. )
-  - Gregorian2, Persian and Islamic(Hijri) Calendar: (Independent of javascript date wide date range support from 1/1/1 to 12/30/9999)
+  - Wide Date range support
+    - Gregorian2, Persian and Islamic(Hijri) calendars support dates from 1/1/1 to 9999/12/30
 - Localization support
   - Intl-API based locales
   - File based locales (soon)
@@ -28,8 +29,6 @@ Jss-date  is a  multi-calendar, lightweight and rich JavaScript library for par
   - File based timezones (soon)
 - Immutable
   - All objects (DateTime, Calendar, Locale, Zone, Duration) are immutable.
-- Extensible
-  - Calendars, locales and zones can be extended.
 - Treeshakable
   - All calendars, locales, zones and plugins are tree-shakable. you only import things you need into your project.
 - Lightweight
@@ -43,146 +42,238 @@ Jss-date  is a  multi-calendar, lightweight and rich JavaScript library for par
 npm install @js-sugar/date
 ```
 
-## How Jss-date works
-Import the calendars you need in your project, instantiate and add them to the Calendars pool. 
+## How it works
 
-> Note:  
-You have to add atleast one calendar to the Calendars pool.
-
+Import the calendars you need in your project, instantiate and add them to the Calendars collection. You have to add at least one calendar to the Calendars collection.
 
 Add the following code at the starting point of your application:
 
 ```
 import { DateTime, Calendars } from '@js-sugar/date';
 import { GregorianCalendar }  from '@js-sugar/date/calendars/gregorian';
-import { GregorianCalendar2 } from '@js-sugar/date/calendars/gregorian2';
+import { HijriCalendar }  from '@js-sugar/date/calendars/hijri';
 import { PersianCalendar }  from '@js-sugar/date/calendars/persian';
-import { HijriCalendar } from '@js-sugar/date/calendars/hijri';
 
-// You can add multiple instances of a calendar with unique id to the Calendars pool.
-// add only the calenders you want to use in your project.
-
-Calendars.add(new GregorianCalendar('gregorian'));   // add a Gregorian calendar with a unique ID:[ 'grigorian' ]
-Calendars.add(new GregorianCalendar2('gregorian2')); // add a Gregorian2 calendar with a unique ID:[ 'grigorian2' ]
-Calendars.add(new PersianCalendar('persian')); // add a Persian calendar with a unique ID:[ 'persian' ]
-Calendars.add(new HijriCalendar('hijri', -1)); // add a Hijri calendar with a unique ID:[ 'hijri' ]
+// Add the calendars you need in your project
+Calendars.add(new GregorianCalendar('gregorian'));   
+Calendars.add(new HijriCalendar('hijri'));   
+Calendars.add(new PersianCalendar('persian'));   
 ```
 
 > Note:  
- the first calendar you add to the Calendars pool is set as default calendar.
+>  the first calendar you add to the Calendars collection is set as the default calendar. You can change the default Calendar of your project at any time.
 
-## Default calendar
-The first calendar you add to the Calendars pool is set as default calendar. You can change default. If you create a DateTime object and don't provide a value for the Calendar argument, default calendar of Calendars pool is used as the calendar of that DateTime object.
+## DateTime Object
+DateTime object is the main object of the JSS-Date library. It stores date and time values. While creating DateTime objects, you should provide following parameters:
 
-```Default calendar code examples:
-const gregorianNow = new DateTime(); // now
-console.log(gregorianNow.year, gregorianNow.month, gregorianNow.day); //-> 2021, 11, 2
-
-const gregorianDate = new DateTime(2021, 10, 26); 
-console.log(gregorianDate.year, gregorianDate.month, gregorianDate.day); //-> 2021, 10, 26
-
-// Set persian calendar as default calendar
-Calendars.default = Calendars.find('persian');
-
-const persianNow = new DateTime(); //now
-console.log(persianNow.year, persianNow.month, persianNow.day); //-> 1400, 8, 11
-
-const persianDate = new DateTime(1400, 8, 4); 
-console.log(persianDate.year, persianDate.month, persianDate.day); //-> 1400, 8, 4
-
-// Set persian calendar as default calendar
-Calendars.default = Calendars.find('hijri');
-
-const hijriNow = new DateTime(); //now
-console.log(hijriNow.year, hijriNow.month, hijriNow.day); //-> 1443, 3, 26
-
-const hijriDate = new DateTime(1443,3,19); 
-console.log(hijriDate.year, hijriDate.month, hijriDate.day); //-> 1443, 3, 19
-```
-
-
-## DateTime structure
-DateTime object has three "required" parts:
-
-- Calendar: Including Gregorian, Gregorian2, Hijri, Persian.
-- Zone: Time-zones including UTC, America/New_York, ...
-- Locale: Locales including ar-AE, en-US, de-DE, ...
+- Calendar: A Calendar object (like Gregorian, Hijri, ...)
+- Zone: A Zone object (like UTC, local zone , ...)
+- Locale: A Locale object like(en-US, ar-AE, ...)
 
 > Note:  
-If you don't provide DateTime constructor arguments, default values will be used. 
+> If you don't provide above parameters to the DateTime constructor, default values will be used:
+> - Default calendar: The first calendar you add to the Calendars collection.
+> - Default Locale: System locale.
+> - Default Zone: local time-zone.
 
-
-
-## Immutability
-DateTime object is immutable. An immutable object means that the state of the Object cannot change after its creation. In other words you can not change date/time units, calendar, zone or locale.
-
+## Examples
+Following examples show you how to create DateTime objects with different Calendars, Locales and zones. In all examples of this documentation, we suppose that you have added following calendars to your project:
 ```
-var d1 = new DateTime();
-
-var d2 = d1.add({ hour: 1});
-
-d1.valueOf() === d2.valueOf(); //=> false
-
+Calendars.add(new GregorianCalendar('gregorian'));   
+Calendars.add(new HijriCalendar('hijri'));   
+Calendars.add(new PersianCalendar('persian'));   
 ```
-In this case, the add() method returns a new instance, leaving d1 unmodified. Object immutability means that Jss-date doesn’t require copy constructors or clone methods.
 
-
-#### Example: Create a DateTime with default Calendar, Zone and Locale:
+#### Example 1:  
+Create a DateTime with default Calendar, Zone and Locale
 ```
+// 
 const d = new DateTime(); // now
 ```
 
-- Default calendar: The first calendar you add to Calendars collection (you can change it).
-- Default Locale: System locale (you can change it).
-- Default Zone: System local time-zone (you can change it).
-
-#### Example: Create DateTime object by providing calendar:
+#### Example 2:  
+Create DateTime objects by providing a calendar:
 ```
-const gregorianDate = new DateTime({calendar: 'gregorian'}); // now
-console.log(gregorianDate.year, gregorianDate.month, gregorianDate.day) //-> 2021, 10, 26
+import { DateTime, Calendars } from '@js-sugar/date';
 
-const persianDate = new DateTime({calendar: 'persian'})  //now
-console.log(persianDate.year, persianDate.month, persianDate.day) //-> 1400, 8, 4
-    
-const hijriDate = new DateTime({calendar: 'hijri'}) //now
-console.log(hijriDate.year, hijriDate.month, hijriDate.day) //-> 1443, 3, 19 
-    
-const gregorian2Date = new DateTime({calendar: 'gregorian2'}) //now
-console.log(gregorian2Date.year, gregorian2Date.month, gregorian2Date.day) //-> 2021, 10, 26 
+const d1 = new DateTime({calendar: 'gregorian'});
+const d2 = new DateTime({calendar: 'hijri'}); 
+const d3 = new DateTime({calendar: Calendars.find('persian')}); 
 
-// output:
-2021 10 26
-1400 8 4
-1443 3 19
-2021 10 26
+console.log(d1.year, d1.month, d1.day);
+console.log(d2.year, d2.month, d2.day);
+console.log(d3.year, d3.month, d3.day);
+
+// output (something like this):
+2022 01 13
+1443 06 10
+1400 10 23
 ```
 
-#### Example: Create a DateTime with specific units (by using default calendar):
+#### Example 3:
+Create a DateTime with specific units (by using default calendar, zone and locale):
 ```
-const d1 = new DateTime(2021, 10); 
-// year:2021, month:10, day:1, hour=minute=second=millisecond:0
+const d1 = new DateTime(2021, 10);
+// year: 2021,
+// month: 10, 
+// day: 1, 
+// hour = minute = second = ms: 0
 
-const d2 = new DateTime(2021, 10, 28, 14, 56, 45, 122); 
-// year:2021, month:10, day:28, hour:14, minute: 56 second: 45, millisecond:122
+const d2 = new DateTime(2021, 10, 28, 14, 56, 45, 122);
+// year: 2021, 
+// month: 10, 
+// day: 28,
+// hour: 14,
+// minute: 56
+// second: 45,
+// ms (millisecond): 122
 ```
 
-#### Example: Create DateTimes with specific date/time units and a specific calendar:  
+#### Example 4: 
+Create DateTimes with specific date/time units and a specific calendar:
 ```
-const d1 = new DateTime(2021, 10, 28, 14, 56, 45, 122, {calendar: 'gregorian'}); 
-// year:2021, month:10, ..., millisecond:122, calendar: [a calendar in Calendars collection with id 'gregorian']
+const d1 = new DateTime(2021, 10, 28, 14, 56, 45, 122, {calendar: 'gregorian'});
+// year: 2021,
+// month: 10,
+// ...
+// ms (millisecond): 122,
+// calendar: [a calendar in Calendars collection with id 'gregorian']
 
-// If you don't want to set all date/time units and also you want to set some options(calendar, zone, locale), pass options object as first argument:
+// If you don't want to set all date-time units and also you want to set some options(calendar, zone, locale), pass options as first argument:
 const d2 = new DateTime({calendar: 'gregorian'} , 2021, 10);
-// year:2021, month:10, day:1, hour=minute=second=millisecond:0
+// year: 2021, 
+// month: 10,
+// day: 1,
+// hour = minute = second = ms: 0
+```
+
+#### Example 5:
+Create a DateTime with specific calendar, locale and time-zones:
+```
+const d1 = new DateTime({zone: Zones.utc}, 2021, 10);
+// year: 2021, month: 10, day: 1 
+// hour = minute = second = ms: 0
+// calendar: default calendar
+// zone: UTC
+// locale: default locale
+
+const d2 = new DateTime(1400, 10, 23, {
+  calendar: 'persian'
+  zone: Zones.local, 
+});
+// year: 2021, month: 10, day: 23 
+// hour = minute = second = ms: 0
+// calendar: a calendar with id 'persian'
+// zone: local time zone (an instance of LocalZone object)
+// locale: default locale
+
+const d3 = new DateTime({
+  calendar: Calendars.find('hijri'),
+  zone: Zones.iana('Asia/Dubai'), 
+}, 1443, 06, 10);
+// year: 1443, month: 06, day: 10
+// hour = minute = second = ms: 0
+// calendar: a calendar with id 'hijri'
+// zone: Asia/Dubai IANA time-zone (a RuntimeIANAZone object)
+// locale: default locale
+
+const d4 = new DateTime({
+  calendar: 'gregorian2'
+  zone: Zones.iana('Asia/Dubai'),
+  locale: 'ar'
+}, 2022, 1, 10);
+// year: 2021, month: 1, day: 10
+// hour = minute = second = ms: 0
+// calendar: a calendar with id 'gregorian2'
+// zone: Asia/Dubai IANA time-zone (a RuntimeIANAZone object)
+// locale: ar (arabic) locale
 ```
 
 
-> Note:  
-DateTime object is immutable. after creating a DateTime object, you cannot change it in other word you can not change it's date/time units, calendar, zone or locale.
+> Note:   
+> DateTime object is immutable.   
+> After creating a DateTime object, you cannot change it. In other words, you cannot change it's date-time units, calendar, zone or locale.
 
-## DateTime constructor overloads
+## Calendars
+A Calendar is an object that does date-time calculations in a specific calendaring system. DateTime object doesn't know anything about this calculations. it just delegate the calculations to a Calendar object.  
+We have implemented 4 calendars so far:  
+- GregorianCalendar
+- Gregorian2Calendar
+- HijriCalendar
+- PersianCalendar
+
+You can easily implement your own Calendar by just inheriting from Calendar class and implementing a few abstract methods.  
+The first calendar you add to the Calendars collection is set as the default calendar. If you create a DateTime object and don't provide a value for the calendar parameter, the default calendar of application is used as the calendar of that DateTime object.  
+You can set the default calendar of the project at any time:  
+
+```
+import { Calendars } from '@js-sugar/date';
+
+const hc = Calendars.find('hijri');
+Calendars.default = hc;
+```
+
+### Convert Calendars
+With JSS-Date library you can easily convert the calendar of a DateTime object:
+
+```
+// Create a Gregorian date
+const d1 = new DateTime({calendar: 'gregorian'}, 2021, 10, 26);
+console.log(d1.year, d1.month, d1.day) //-> 2021, 10, 26
+
+// Convert Gregorian to Persian date
+const d2 = gregorianDate.to('persian');
+console.log(d2.year, d2.month, d2.day) //-> 1400, 8, 4
+
+// Convert Persian to Hijri date
+const d3 = d2.to('hijri');
+console.log(d3.year, d3.month, d3.day) //-> 1443, 3, 19
+```
+
+## Time zones
+A time zone is a region of the Earth that has adopted the same standard time, usually referred to as the local time. Most adjacent time zones are exactly one hour apart, and by convention compute their local time as an offset from Greenwich Mean Time (see also UTC).
+The Zones object is responsible for creating Zone objects. Generally there are 3 different Zone objects in JSS-Date library:
+- FixedZone: a Zone with fixed offset, like UTC
+- LocalZone: local time zone (system dependent)
+- IanaZone: a standard IANA time-zone, like "Europe/London"
+
+You can create Zone objects by using static methods of Zones class:
+
+```
+import { Calendars } from '@js-sugar/date';
+
+// Create a FixedZone (name: 'my_zone', offset: +03:30)
+zone1 = Zones.fixed('my_zone', 3, 30);
+
+// UTC zone (a FixedZone with zero offset)
+zone2 = Zones.utc;
+
+// LocalZone
+zone3 = Zones.local;
+
+// Create an IANAZone
+zone4 = Zones.iana('Asia/Istanbul');
+
+// Create a DateTime with a specific zone
+const d = new DateTime({ zone: zone4 });
+```
+
+It's easy to convert(change) the time-zone of DateTime objects:
+```
+const d = new DateTime({ zone: Zones.utc }, 2022, 1, 1, 12);
+console.log(d.hour, d1.minute, d.second); // output: 12, 0, 0
+
+const d2 = d.toZone('Asia/Tehran');
+console.log(d2.hour, d2.minute, d2.second); // output: 3, 30, 0
+
+const d3 = d.toZone('Europe/Luxembourg');
+console.log(d2.hour, d2.minute, d2.second); // output: 1, 0, 0
+```
+
+Note that toZone() method returns a new DateTime object and doesn't change the zone of the object.
+
+## DateTime constructor
 DateTime constructor has several overloads:
-
 ```
 DateTime();
 DateTime(opts);
@@ -192,30 +283,50 @@ DateTime(timestamp, opts?);
 
 // Parameters with a question mark(?) are optional.
 ```
+options ("opts" parameter) is an object with three optional properties:
+- calendar: a Calendar object or the unique ID of a Calendar object.
+- zone: a Zone object or an IANA time-zone name.
+- locale: a Locale object or the ID of a Locale object.
 
-options ("opts" parameter) is an object with three optional fields:
-- calendar: a Calendar object or the unique ID of a Calendar object,  
-- zone: a Zone object or the ID of a Zone object,  
-- locale: a Locale object or the ID of a Locale object,  
+## Calculations
+```
+const dt = new DateTime( { calendar: 'gregorian' }, 2020,1,1);
+const dt2 = dt.add({ day: 1 });
+console.log(dt2.year, dt2.month, dt2.day); //-> 2020, 1, 2
 
-## Find calendars 
-You can add multiple calendars to your project. you create Calendar objects and add them to Calendars pool. you should do this at the starting point of your project. The first Calendar you add to Calendars pool becomes default Calendar of your project (you can change it).
-
-
-If you want to create a DateTime object with a specific calendar, you should specify it:
+const dt = new DateTime({ calendar: 'persian'}, 1400,1,1 );
+const dt2 = dt.subtract({ day: 1 });
+console.log(dt2.year, dt2.month, dt2.day); //-> 1399, 12, 30
 ```
 
-// Specify calendar by ID
-const d1 = new DateTime({calendar: 'hijri'}); // 'hijri' is the ID of a calendar in the Calendars collection
+## Parse strings
+You can parse strings by using parse plugin:
+```
+import { parse } from '@js-sugar/date/plugins/parse';
 
-// Alternatively, you can pass a refrence to a Calendar object
-const d2 = new DateTime({calendar: hijriCalendar}); 
+const d1 = parse('2012/2/6', 'Y/M/d');
+console.log(d1.year, d1.month, d1.day) // output: 2012, 2, 6
+
+const dt = parse("1400-10-23", "YYYY-MM-dd", {calendar: 'persian'});
+console.log(dt.year, dt.month, dt.day) // output: 1400, 10, 23
+```
+For more information, see parse plugin documentation.
+
+## Format dates
+You can format dates by using format plugin:
+```
+import { format } from '@js-sugar/date/plugins/format';
+
+const d1 = new DateTime(2001, 9, 8);
+console.log(format(d1,'dd/MM/YYYY')) // output: '08/09/2001'
 ```
 
-Changing the calendar of a date object is super easy. just use 'to()' method of DateTime object.
+## Immutability
+DateTime object is immutable. An immutable object means that the state of the object cannot change after its creation. In other words you cannot change date-time units, calendar, zone or locale.
+```
+const d1 = new DateTime();
+const d2 = d1.add({ hour: 1});
 
+d1.valueOf() === d2.valueOf(); // false
 ```
-const d1 = new DateTime({calendar: 'gregorian'}, 2021, 10, 25);
-const d2 = d1.to('persian');
-console.log(d2.year, d2.month, d2.day) // 1400, 8, 3
-```
+In this case, the add() method returns a new instance, leaving d1 unmodified.
