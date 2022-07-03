@@ -80,10 +80,10 @@ DateTime object is the main object of the JSS-Date library. It stores date and t
 ## new Date(year, month, date, hours, minutes, seconds, ms)
 Create the date with the given components in the local time zone and default calendar. Only the first two arguments are obligatory.
 
-The year should have 4 digits.
-The month count starts with 1, up to 12.
-The date parameter is actually the day of month, if absent then 1 is assumed.
-If hours/minutes/seconds/ms is absent, they are assumed to be equal 
+- The year should have 4 digits.
+- The month count starts with 1, up to 12.
+- The date parameter is actually the day of month, if absent then 1 is assumed.
+- If hours/minutes/seconds/ms is absent, they are assumed to be equal 
 
 
 ## Examples
