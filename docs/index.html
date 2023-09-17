@@ -2,7 +2,7 @@
 <a href="#tick" id="tick" style="color: inherit; text-decoration: none;">
   <h1>Tick</h1>
 </a>
-<p>Tick is an open source multi-calendar, lightweight and rich JavaScript library for parsing, validating, manipulating, formatting, and displaying date and time for all the Javascript runtime environments (NodeJS, browser, ...). It supports many calendars and you can easily convert DateTime between different calendars and time zones.</p>
+<p>Tick is an open-source multi-calendar, lightweight and rich JavaScript library for parsing, validating, manipulating, formatting, and displaying date and time for all the Javascript runtime environments (NodeJS, browser, ...). It supports many calendars and you can easily convert DateTime between different calendars and time zones.</p>
 
 <a href="#main-features" id="main-features" style="color: inherit; text-decoration: none;">
   <h2>Main Features</h2>
@@ -82,7 +82,7 @@
 <a href="#how-it-works" id="how-it-works" style="color: inherit; text-decoration: none;">
   <h2>How it works</h2>
 </a>
-<p>Import the calendars you need in your project, instantiate and add them to the Calendars collection. You must add at least one calendar to the Calendars collection.</p>
+<p>Import the calendars you need in your project, instantiate and add them to Calendars collection. You must add at least one calendar to Calendars collection.</p>
 <p>Add the following code at the starting point of your application:</p>
 
 <a href="#angular-environment" id="angular-environment" style="color: inherit; text-decoration: none;">
@@ -97,7 +97,7 @@
 <pre><code><span class="hl-6">const</span><span class="hl-1"> { </span><span class="hl-8">DateTime</span><span class="hl-1">, </span><span class="hl-8">Calendars</span><span class="hl-1"> } = </span><span class="hl-5">require</span><span class="hl-1">(</span><span class="hl-3">&quot;@soft-libs/tick&quot;</span><span class="hl-1">);</span><br/><span class="hl-6">const</span><span class="hl-1"> { </span><span class="hl-8">GregorianCalendar</span><span class="hl-1"> } = </span><span class="hl-5">require</span><span class="hl-1">(</span><span class="hl-3">&quot;@soft-libs/tick/calendars/gregorian&quot;</span><span class="hl-1">);</span><br/><span class="hl-6">const</span><span class="hl-1"> { </span><span class="hl-8">HijriCalendar</span><span class="hl-1"> } = </span><span class="hl-5">require</span><span class="hl-1">(</span><span class="hl-3">&quot;@soft-libs/tick/calendars/hijri&quot;</span><span class="hl-1">);</span><br/><span class="hl-6">const</span><span class="hl-1"> { </span><span class="hl-8">PersianCalendar</span><span class="hl-1"> } = </span><span class="hl-5">require</span><span class="hl-1">(</span><span class="hl-3">&quot;@soft-libs/tick/calendars/persian&quot;</span><span class="hl-1">);</span><br/><span class="hl-6">const</span><span class="hl-1"> { </span><span class="hl-8">GregorianCalendar2</span><span class="hl-1"> } = </span><span class="hl-5">require</span><span class="hl-1">(</span><span class="hl-3">&quot;@soft-libs/tick/calendars/gregorian2&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-4">// Add the calendars you need in your project</span><br/><span class="hl-2">Calendars</span><span class="hl-1">.</span><span class="hl-5">add</span><span class="hl-1">(</span><span class="hl-6">new</span><span class="hl-1"> </span><span class="hl-5">GregorianCalendar</span><span class="hl-1">(</span><span class="hl-3">&#39;gregorian&#39;</span><span class="hl-1">));</span><br/><span class="hl-2">Calendars</span><span class="hl-1">.</span><span class="hl-5">add</span><span class="hl-1">(</span><span class="hl-6">new</span><span class="hl-1"> </span><span class="hl-5">HijriCalendar</span><span class="hl-1">(</span><span class="hl-3">&#39;hijri&#39;</span><span class="hl-1">,</span><span class="hl-7">0</span><span class="hl-1">));   </span><br/><span class="hl-2">Calendars</span><span class="hl-1">.</span><span class="hl-5">add</span><span class="hl-1">(</span><span class="hl-6">new</span><span class="hl-1"> </span><span class="hl-5">PersianCalendar</span><span class="hl-1">(</span><span class="hl-3">&#39;persian&#39;</span><span class="hl-1">));   </span><br/><span class="hl-2">Calendars</span><span class="hl-1">.</span><span class="hl-5">add</span><span class="hl-1">(</span><span class="hl-6">new</span><span class="hl-1"> </span><span class="hl-5">GregorianCalendar2</span><span class="hl-1">(</span><span class="hl-3">&#39;gregorian2&#39;</span><span class="hl-1">));   </span>
 </code></pre>
 <blockquote>
-<p>Note:<br> the first calendar you add to the Calendars collection is set as the default calendar. You can change the default Calendar of your project at any time.</p>
+<p>Note:<br> the first calendar you add to Calendars collection is set as the default calendar. You can change the default Calendar of your project at any time.</p>
 </blockquote>
 
 <a href="#datetime-object" id="datetime-object" style="color: inherit; text-decoration: none;">
@@ -112,7 +112,7 @@
 <blockquote>
 <p>Note:<br>If you don&#39;t provide above parameters to the DateTime constructor, default values will be used:</p>
 <ul>
-<li>Default calendar: The first calendar you add to the Calendars collection.</li>
+<li>Default calendar: The first calendar you add to Calendars collection.</li>
 <li>Default Locale: System locale.</li>
 <li>Default Zone: local time-zone.</li>
 </ul>
@@ -186,7 +186,7 @@
 <li>PersianCalendar</li>
 </ul>
 <p>You can easily implement your own Calendar by extending Calendar class and implementing abstract methods.  </p>
-<p>The first calendar you add to  Calendars collection is set as default calendar. If you create a DateTime object and don&#39;t provide a value for the calendar parameter, the default calendar of application is used as the calendar of that DateTime object.<br>You can set the default calendar of the project at runtime:  </p>
+<p>If you create a DateTime object and don&#39;t provide a value for the calendar parameter, the default calendar of application is used as the calendar of that DateTime object.<br>You can set the default calendar of the project at runtime:  </p>
 <pre><code><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Calendars</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@soft-libs/tick&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-8">hc</span><span class="hl-1"> = </span><span class="hl-2">Calendars</span><span class="hl-1">.</span><span class="hl-5">find</span><span class="hl-1">(</span><span class="hl-3">&#39;hijri&#39;</span><span class="hl-1">);</span><br/><span class="hl-2">Calendars</span><span class="hl-1">.</span><span class="hl-2">default</span><span class="hl-1"> = </span><span class="hl-2">hc</span><span class="hl-1">;</span>
 </code></pre>
 
