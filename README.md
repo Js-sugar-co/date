@@ -1,36 +1,38 @@
-# JSS-Date
+# Tick
 
-JSS-date is a multi-calendar, lightweight and rich JavaScript library for parsing, validating, manipulating, formatting, and displaying dates and times for all the Javascript runtime environments (NodeJS, browser, ...). It supports many calendars and you can easily convert DateTimes between different calendars and time zones.
+Tick is an open-source multi-calendar, lightweight and rich JavaScript library for parsing, validating, manipulating, formatting, and displaying date and time for all the Javascript runtime environments (NodeJS, browser, ...). It supports many calendars and you can easily convert DateTime between different calendars and time zones.
 
 ## Main Features
 - Multi-Calendar  
-  JSS-Date supports supports any calendars. currently we have implemented Gregorian, Hijri and Persian calendars and we plan to implement more calendars in the future. you can easily implement your own calendars.
+  Tick currently supports multiple calendars. Gregorian, Hijri and Persian calendars have already been implemented. you can easily implement your own calendars.
 
-  - Calendar Independent
-    - The (core) library is not dependent on any specific calendar. you can create DateTime objects with different Calendar objects.
+  - DateTime object is independent of the calendars
+    - The (core) library is not dependent on calendar object. you can create DateTime objects with different calendars.
   - Extensible
     - Calendars, locales and zones can be extended.
-    - You can easily implement your own calendars, locales and zones by just inheriting from a base class and implementing a few abstract methods.
+    - You can easily implement your own calendars, locales, and zones by just extending base class and implementing abstract methods.
   - With 4 Pre-implemented calendars
-    - Gregorian (implemented by using JavaScript Date object)
-    - Gregorian2
-    - Islamic (Hijri)
-    - Persian
-    - (More calendars will be added in the future ...)
+    - Gregorian (Actually it is a wrapper for JavaScript Date object)
+    - Gregorian2 (Has a standalone solution, [Read the following note for details...](#read-note))
+    - Hijri (Has a standalone solution, [Read the following note for details...](#read-note))
+    - Persian (Has a standalone solution, [Read the following note for details...](#read-note))
+    > [Note:](#read-note) <a name="read-note"></a>  
+      > Gregorian2, Hijri, and Persian calendars have a standalone solution that operates independently of the JavaScript Date object. It offers its unique calculations and functionalities, providing a comprehensive and reliable approach to managing date.
+
   - Accurate
-    - See our tests in github (soon)
-  - Wide Date range support
-    - Gregorian2, Persian and Islamic(Hijri) calendars support dates from 1/1/1 to 9999/12/30
+  - Wide date range support
+    - Gregorian calendar supports JavaScript Date object range.
+    - Gregorian2, Persian and Hijri calendars support dates from 1/1/1 to 9999/12/31. [Read the previous note for details...](#read-note)
 - Localization support
   - Intl-API based locales
-  - File based locales (soon)
+  - File based locales (Not implemented yet)
 - Timezone support
   - Intl-API based timezones
-  - File based timezones (soon)
+  - File based timezones (Not implemented yet)
 - Immutable
   - All objects (DateTime, Calendar, Locale, Zone, Duration) are immutable.
 - Treeshakable
-  - All calendars, locales, zones and plugins are tree-shakable. you only import things you need into your project.
+  - All calendars, locales, zones and plugins are tree-shakable.
 - Lightweight
   - Core library size is around 15KB minified (5KB minified and Gzipped)
 - NodeJS and browser support
@@ -39,32 +41,50 @@ JSS-date is a multi-calendar, lightweight and rich JavaScript library for parsin
 ## Installation command
 
 ```node
-npm install @js-sugar/date
+npm install @soft-libs/tick
 ```
 
 ## How it works
 
-Import the calendars you need in your project, instantiate and add them to the Calendars collection. You have to add at least one calendar to the Calendars collection.
+Import the calendars you need in your project, instantiate and add them to Calendars collection. You must add at least one calendar to Calendars collection.
 
 Add the following code at the starting point of your application:
 
+### Angular environment
 ```
-import { DateTime, Calendars } from '@js-sugar/date';
-import { GregorianCalendar }  from '@js-sugar/date/calendars/gregorian';
-import { HijriCalendar }  from '@js-sugar/date/calendars/hijri';
-import { PersianCalendar }  from '@js-sugar/date/calendars/persian';
+import { DateTime, Calendars } from '@soft-libs/tick';
+import { GregorianCalendar }  from '@soft-libs/tick/calendars/gregorian';
+import { HijriCalendar }  from '@soft-libs/tick/calendars/hijri';
+import { PersianCalendar }  from '@soft-libs/tick/calendars/persian';
+import { GregorianCalendar2 }  from '@soft-libs/tick/calendars/gregorian2';
 
 // Add the calendars you need in your project
 Calendars.add(new GregorianCalendar('gregorian'));   
-Calendars.add(new HijriCalendar('hijri'));   
+Calendars.add(new HijriCalendar('hijri',0));   
 Calendars.add(new PersianCalendar('persian'));   
+Calendars.add(new GregorianCalendar2('gregorian'));   
+```
+
+### Nodejs environment
+```
+const { DateTime, Calendars } = require("@soft-libs/tick");
+const { GregorianCalendar } = require("@soft-libs/tick/calendars/gregorian");
+const { HijriCalendar } = require("@soft-libs/tick/calendars/hijri");
+const { PersianCalendar } = require("@soft-libs/tick/calendars/persian");
+const { GregorianCalendar2 } = require("@soft-libs/tick/calendars/gregorian2");
+
+// Add the calendars you need in your project
+Calendars.add(new GregorianCalendar('gregorian'));
+Calendars.add(new HijriCalendar('hijri',0));   
+Calendars.add(new PersianCalendar('persian'));   
+Calendars.add(new GregorianCalendar2('gregorian2'));   
 ```
 
 > Note:  
->  the first calendar you add to the Calendars collection is set as the default calendar. You can change the default Calendar of your project at any time.
+>  the first calendar you add to Calendars collection is set as the default calendar. You can change the default Calendar of your project at any time.
 
 ## DateTime Object
-DateTime object is the main object of the JSS-Date library. It stores date and time values. While creating DateTime objects, you should provide following parameters:
+DateTime object is the main object of Tick library. It stores date and time values. While creating DateTime object, you should provide following parameters:
 
 - Calendar: A Calendar object (like Gregorian, Hijri, ...)
 - Zone: A Zone object (like UTC, local zone , ...)
@@ -72,25 +92,25 @@ DateTime object is the main object of the JSS-Date library. It stores date and t
 
 > Note:  
 > If you don't provide above parameters to the DateTime constructor, default values will be used:
-> - Default calendar: The first calendar you add to the Calendars collection.
+> - Default calendar: The first calendar you add to Calendars collection.
 > - Default Locale: System locale.
 > - Default Zone: local time-zone.
 
 
-## new Date(year, month, date, hours, minutes, seconds, ms)
+## new DateTime(year, month, date, hours, minutes, seconds, ms)
 Create the date with the given components in the local time zone and default calendar. Only the first two arguments are obligatory.
 
 - The year should have 4 digits.
 - The month count starts with 1, up to 12.
 - The date parameter is actually the day of month, if absent then 1 is assumed.
-- If hours/minutes/seconds/ms is absent, they are assumed to be equal 
+- If hours/minutes/seconds/ms is absent, they are assumed to be equal 0
 
 
 ## Examples
 Following examples show you how to create DateTime objects with different Calendars, Locales and zones. In all examples of this documentation, we suppose that you have added following calendars to your project:
 ```
 Calendars.add(new GregorianCalendar('gregorian'));   
-Calendars.add(new HijriCalendar('hijri'));   
+Calendars.add(new HijriCalendar('hijri',0));   
 Calendars.add(new PersianCalendar('persian'));   
 ```
 
@@ -102,9 +122,9 @@ const d = new DateTime(); // now
 ```
 
 #### Example 2:  
-Create DateTime objects by providing a calendar:
+Create DateTime objects by specifying a calendar:
 ```
-import { DateTime, Calendars } from '@js-sugar/date';
+import { DateTime, Calendars } from '@soft-libs/tick';
 
 const d1 = new DateTime({calendar: 'gregorian'});
 const d2 = new DateTime({calendar: 'hijri'}); 
@@ -121,7 +141,7 @@ console.log(d3.year, d3.month, d3.day);
 ```
 
 #### Example 3:
-Create a DateTime with specific units (by using default calendar, zone and locale):
+Create a DateTime by specifying date and time units (by using default calendar, zone and locale):
 ```
 const d1 = new DateTime(2021, 10);
 // year: 2021,
@@ -140,7 +160,7 @@ const d2 = new DateTime(2021, 10, 28, 14, 56, 45, 122);
 ```
 
 #### Example 4: 
-Create DateTimes with specific date/time units and a specific calendar:
+Create DateTimes  by specifying date/time units and a calendar:
 ```
 const d1 = new DateTime(2021, 10, 28, 14, 56, 45, 122, {calendar: 'gregorian'});
 // year: 2021,
@@ -158,7 +178,7 @@ const d2 = new DateTime({calendar: 'gregorian'} , 2021, 10);
 ```
 
 #### Example 5:
-Create a DateTime with specific calendar, locale and time-zones:
+Create a DateTime by specifying calendar, locale and time-zones:
 ```
 const d1 = new DateTime({zone: Zones.utc}, 2021, 10);
 // year: 2021, month: 10, day: 1 
@@ -205,26 +225,28 @@ const d4 = new DateTime({
 > After creating a DateTime object, you cannot change it. In other words, you cannot change it's date-time units, calendar, zone or locale.
 
 ## Calendars
-A Calendar is an object that does date-time calculations in a specific calendaring system. DateTime object doesn't know anything about this calculations. it just delegate the calculations to a Calendar object.  
-We have implemented 4 calendars so far:  
+A Calendar is an object that does date-time calculations in a specific calendaring system, DateTime object is not aware of calculations, it just delegate calendaring calculations to its Calendar object.  
+
+Currently four calendars have been implemented: 
 - GregorianCalendar
 - Gregorian2Calendar
 - HijriCalendar
 - PersianCalendar
 
-You can easily implement your own Calendar by just inheriting from Calendar class and implementing a few abstract methods.  
-The first calendar you add to the Calendars collection is set as the default calendar. If you create a DateTime object and don't provide a value for the calendar parameter, the default calendar of application is used as the calendar of that DateTime object.  
-You can set the default calendar of the project at any time:  
+You can easily implement your own Calendar by extending Calendar class and implementing abstract methods.  
+
+If you create a DateTime object and don't provide a value for the calendar parameter, the default calendar of application is used as the calendar of that DateTime object.  
+You can set the default calendar of the project at runtime:  
 
 ```
-import { Calendars } from '@js-sugar/date';
+import { Calendars } from '@soft-libs/tick';
 
 const hc = Calendars.find('hijri');
 Calendars.default = hc;
 ```
 
 ### Convert Calendars
-With JSS-Date library you can easily convert the calendar of a DateTime object:
+With Tick library you can easily convert the calendar of a DateTime object:
 
 ```
 // Create a Gregorian date
@@ -242,7 +264,7 @@ console.log(d3.year, d3.month, d3.day) //-> 1443, 3, 19
 
 ## Time zones
 A time zone is a region of the Earth that has adopted the same standard time, usually referred to as the local time. Most adjacent time zones are exactly one hour apart, and by convention compute their local time as an offset from Greenwich Mean Time (see also UTC).
-The Zones object is responsible for creating Zone objects. Generally there are 3 different Zone objects in JSS-Date library:
+The Zones object is responsible for creating Zone objects. Generally there are 3 different Zone objects in Tick library:
 - FixedZone: a Zone with fixed offset, like UTC
 - LocalZone: local time zone (system dependent)
 - IanaZone: a standard IANA time-zone, like "Europe/London"
@@ -250,7 +272,7 @@ The Zones object is responsible for creating Zone objects. Generally there are 3
 You can create Zone objects by using static methods of Zones class:
 
 ```
-import { Calendars } from '@js-sugar/date';
+import { Calendars } from '@soft-libs/tick';
 
 // Create a FixedZone (name: 'my_zone', offset: +03:30)
 zone1 = Zones.fixed('my_zone', 3, 30);
@@ -277,7 +299,7 @@ const d2 = d.toZone('Asia/Tehran');
 console.log(d2.hour, d2.minute, d2.second); // output: 3, 30, 0
 
 const d3 = d.toZone('Europe/Luxembourg');
-console.log(d2.hour, d2.minute, d2.second); // output: 1, 0, 0
+console.log(d3.hour, d3.minute, d3.second); // output: 1, 0, 0
 ```
 
 Note that toZone() method returns a new DateTime object and doesn't change the zone of the object.
@@ -312,7 +334,7 @@ console.log(dt2.year, dt2.month, dt2.day); //-> 1399, 12, 30
 ## Parse strings
 You can parse strings by using parse plugin:
 ```
-import { parse } from '@js-sugar/date/plugins/parse';
+import { parse } from '@soft-libs/tick/plugins/parse';
 
 const d1 = parse('2012/2/6', 'Y/M/d');
 console.log(d1.year, d1.month, d1.day) // output: 2012, 2, 6
@@ -325,7 +347,7 @@ For more information, see parse plugin documentation.
 ## Format dates
 You can format dates by using format plugin:
 ```
-import { format } from '@js-sugar/date/plugins/format';
+import { format } from '@soft-libs/tick/plugins/format';
 
 const d1 = new DateTime(2001, 9, 8);
 console.log(format(d1,'dd/MM/YYYY')) // output: '08/09/2001'
